@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="Keywords" content="<%= data.pack.title %>,TRANSFER-PAPER｜转印纸">
+        <meta name="Description" content="<%= data.pack.title %>">
+        <link rel="stylesheet" type="text/css" href="resources/fontawesome.min.css">
+        <link rel="stylesheet" type="text/css" href="_/style.css">
+        <script type="text/Javascript" src="resources/vanilla-tilt.min.js"></script>
+        <script type="text/Javascript" src="resources/remarkable.min.js"></script>
+        <title><%= data.pack.title %></title>
+    </head>
+    <body>
+        <div id="main" data-tilt data-tilt-full-page-listening data-tilt-max="7" data-tilt-speed="100" data-tilt-perspective="7000" data-tilt-easing="cubic-bezier(0.25,0.1,0.25,1)">
+            <div id="uwu1"></div>
+            <div id="uwu2">
+                <div id="title">
+                    <h4><i class="ellipsis fas fa-copyright"></i><%= data.pack.copyright %></h4>
+                    <h1 class="ellipsis"><%= data.pack.title %></h1>
+                </div>
+                <div id="pages">
+                    <div class="button"><b><i class="fas fa-home"></i>首页</b></div>
+                    <div class="button"><b><i class="fas fa-link"></i>树洞</b></div>
+                    <div class="button"><b><i class="fas fa-info-circle"></i>关于</b></div>
+                </div>
+            </div>
+            <div id="uwu3"></div>
+            <div id="uwu4">
+                <div id="left">
+                    <div id="tags">
+                        <input type="checkbox" id="awa1"/>
+                        <div class="body"></div>
+                        <div class="head">
+                            <h3 class="ellipsis"><i class="fas fa-tags"></i>分类标签</h3>
+                            <div class="buttons"><label for="awa1" class="button palette"><i class="fas fa-palette"></i></label></div>
+                        </div>
+                    </div>
+                    <div id="archives">
+                        <input type="checkbox" id="awa4"/>
+                        <div class="body">
+                        </div>
+                        <div class="head">
+                            <h3 class="ellipsis"><i class="fas fa-book"></i>文章归档</h3>
+                            <div class="buttons"><label for="awa4" class="button reverse"><i class="fas fa-undo"></i></label></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="right">
+                    <div id="stats">
+                        <input type="checkbox" id="awa2"/>
+                        <div class="body">
+                            <div id="paper">
+                                <h4>今夕何夕</h4><p class="ellipsis" id="time">2025/08/18 11:45:14</p>
+                                <h4>作者路过</h4><p class="ellipsis" id="sign"></p>
+                            </div>
+                            <div id="table"></div>
+                        </div>
+                        <div class="head">
+                            <h3 class="ellipsis"><i class="fas fa-toilet-paper"></i>博客相关</h3>
+                            <div class="buttons"><label for="awa2" class="button switch"><i class="fas fa-stream"></i></label></div>
+                        </div>
+                    </div>
+                    <div id="history">
+                        <input type="checkbox" id="awa3"/>
+                        <div class="body">
+                            <div class="new">
+                                <div class="comment">
+                                    <fieldset>
+                                        <legend>paperee<i class="far fa-comment-dots"></i></legend>
+                                        <p>1919-08-10 11:45:14</p>
+                                        <div class="content">
+                                            <p>我觉得还行</p>
+                                            <h3>测试测试测试（</h3>
+                                        </div>
+                                        <h5 class="ellipsis"><a href="https://www.paperee.com/2025/08/10/114514.html">qwerasdf</a></h5>
+                                    </fieldset>
+                                </div>
+                                <div class="comment">
+                                    <fieldset>
+                                        <legend>纸片君ee<i class="far fa-comment-dots"></i></legend>
+                                        <p>2025-08-03 15:34</p>
+                                        <div class="content">
+                                            <p>你好……</p>
+                                        </div>
+                                        <h5 class="ellipsis"><a href="https://www.paperee.com/2025/08/10/114514.html">纸片君ee的燃烧方式</a></h5>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="old">
+                                <div class="comment">
+                                    <fieldset>
+                                        <legend>sbee<i class="far fa-comment-dots"></i></legend>
+                                        <p>2025-08-03 15:34</p>
+                                        <div class="content">
+                                            <p>44FF00</p>
+                                            <h3>测试测试测试（</h3>
+                                        </div>
+                                        <h5 class="ellipsis"><a href="https://www.paperee.com/2025/08/10/114514.html">JK研究</a></h5>
+                                    </fieldset>
+                                </div>
+                                <div class="comment">
+                                    <fieldset>
+                                        <legend>猛烈燃烧的纸片<i class="far fa-comment-dots"></i></legend>
+                                        <p>2025-08-03 15:34</p>
+                                        <div class="content">
+                                            <p>48923874289472847289472894727482974238</p>
+                                        </div>
+                                        <h5 class="ellipsis"><a href="https://www.paperee.com/2025/08/10/114514.html">聊天室历史书</a></h5>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="head">
+                            <h3 class="ellipsis"><i class="fas fa-comments"></i>最<b class="new">新</b><b class="old">旧</b>评论</h3>
+                            <div class="buttons"><label for="awa3" class="button reverse"><i class="fas fa-retweet"></i></label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="uwu5">
+                <input type="checkbox" id="ovo1" checked/>
+                <input type="checkbox" id="ovo2" checked/>
+                <input name="layer" type="radio" id="uvu1" checked/>
+                <input name="layer" type="radio" id="uvu2"/>
+                <input name="layer" type="radio" id="uvu3"/>
+                <div id="carton">
+                    <div id="layer2">
+                        <div id="console">
+                            <div class="head">
+                                <h2><i class="fas fa-cog"></i>控制台</h2>
+                            </div>
+                            <div class="body">
+                                <fieldset id="webzoom">
+                                    <legend><b>页面相关</b></legend>
+                                    <h4>网页缩放：100%</h4>
+                                    <input type="range" min="50" max="150" value="100">
+                                </fieldset>
+                                <fieldset id="sidebar">
+                                    <legend><b>通知相关</b></legend>
+                                </fieldset>
+                                <fieldset id="sidebar">
+                                    <legend><b>侧边栏相关</b></legend>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div id="comments">
+                            <div class="head">
+                                <h2><i class="fas fa-edit"></i><span></span></h2>
+                            </div>
+                            <div class="body">
+                                <form id="forum">
+                                    <textarea type="text" name="text" placeholder="来发送一条一条留言/评论吧！（支持Markdown语法）"></textarea>
+                                    <div id="responses">
+                                        <h3><i class="far fa-smile-plus"></i>添加表情</h3>
+                                        <div class="buttons"></div>
+                                    </div>
+                                    <div id="submit">
+                                        <input id="user" type="text" name="nick" autocomplete="off" placeholder="昵称">
+                                        <button id="post" type="submit"><b>发送</b></button>
+                                    </div>
+                                    <div class="comments">
+                                        <div class="comment preview">
+                                            <h3>paperee</h3>
+                                            <div class="bubble">
+                                                <div class="content">
+                                                    <p>我觉得还行</p>
+                                                    <b>测试测试测试（</b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="comment">
+                                            <h3>paperee</h3>
+                                            <div class="bubble">
+                                                <div class="content">
+                                                    <p>我觉得还行</p>
+                                                    <b>测试测试测试（</b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="comment">
+                                            <h3>paperee</h3>
+                                            <div class="bubble">
+                                                <div class="content">
+                                                    <p>我觉得还行</p>
+                                                    <b>测试测试测试（</b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="comment">
+                                            <h3>纸片君ee</h3>
+                                            <div class="bubble">
+                                                <div class="content">
+                                                    <p>2025-08-03 15:34</p>
+                                                    <p>https://www.paperee.com/2025/08/10/114514.html</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div id="markdown">
+                                    <div class="content">
+                                        <h4>Markdown语法</h4>
+                                        <p></p>
+                                        <h1># 标题1</h1>
+                                        <h2>## 标题2</h2>
+                                        <h3>### 标题3</h3>
+                                        <h4>#### 标题4</h4>
+                                        <h5>##### 标题5</h5>
+                                        <h6>###### 标题6</h6>
+                                        <p><i>*斜体*</i></p>
+                                        <p><b>**粗体**</b></p>
+                                        <p><b><i>***粗斜体***</i></b></p>
+                                        <p><s>~~删除线~~</s></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="layer1">
+                        <div id="essays">
+                            <div class="body"></div>
+                            <div class="head"><h3><i class="fas fa-file-alt"></i></h3></div>
+                            <div id="flip">
+                                <div class="button first"><a><i class="fas fa-angle-double-up"></i></a></div>
+                                <div class="button prev"><a><i class="fas fa-angle-up"></i></a></div>
+                                <div class="button now"><span></span></div>
+                                <div class="button next"><a><i class="fas fa-angle-down"></i></a></div>
+                                <div class="button last"><a><i class="fas fa-angle-double-down"></i></a></div>
+                            </div>
+                        </div>
+                        <div id="essay">
+                            <div class="body"></div>
+                        </div>
+                    </div>
+                    <div id="float">
+                        <div class="buttons">
+                            <div class="layer1">
+                                <label class="button reverse" for="ovo1"><i class="fas fa-sort-amount-down"></i></label>
+                            </div>
+                            <div class="layer2">
+                                <div class="console">
+                                </div>
+                                <div class="comment">
+                                    <label class="button" for="ovo2"><i class="fas fa-question"></i></label>
+                                </div>
+                                <label class="button" for="uvu1"><i class="fas fa-times"></i></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div id="binding">
+                    <div class="buttons">
+                        <label class="button layer"><i class="fas fa-window-maximize"></i><span></span></label>
+                        <hr>
+                        <label class="button home" for="uvu1"><i class="fas fa-book-open"></i><span>主页面</span></label>
+                        <label class="button console" for="uvu2"><i class="fas fa-sliders-h"></i><span>控制台</span></label>
+                        <label class="button comments" for="uvu3"><i class="fas fa-comment"></i><span></span></label>
+                    </div>
+                </div>
+            </div>
+            <div id="uwu6"></div>
+        </div>
+    </body>
+    <script>const data=<%- JSON.stringify(data) %></script>
+    <script src="_/script.js"></script>
+</html>

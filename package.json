@@ -1,0 +1,26 @@
+{
+    "name": "transfer-paper",
+    "version": "1.0.0",
+    "homepage": "https://paperee.guru/",
+    "description": "uwu",
+    "keywords": [],
+    "main": "server.mjs",
+    "scripts": {
+        "start": "node server.mjs",
+        "test": "echo \"Error:no test specified\" && exit 1"
+    },
+    "author": "paperee",
+    "license": "WTFPL",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/paperee/transfer-paper.git"
+    },
+    "bugs": {
+        "url": "https://github.com/paperee/transfer-paper/issues"
+    },
+    "dependencies": {
+        "chokidar": "^4.0.3",
+        "ejs": "^3.1.10",
+        "express": "^4.21.2"
+    }
+}
