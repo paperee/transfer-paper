@@ -8,9 +8,11 @@
         <meta name="Keywords" content="<%= data.pack.title %>,TRANSFER-PAPER｜转印纸">
         <meta name="Description" content="<%= data.pack.title %>">
         <link rel="stylesheet" type="text/css" href="resources/fontawesome.min.css">
+        <link rel="stylesheet" type="text/css" href="resources/vs-dark.css">
         <link rel="stylesheet" type="text/css" href="_/style.css">
         <script type="text/Javascript" src="resources/vanilla-tilt.min.js"></script>
         <script type="text/Javascript" src="resources/remarkable.min.js"></script>
+        <script type="text/Javascript" src="resources/highlight.min.js"></script>
         <title><%= data.pack.title %></title>
     </head>
     <body>
@@ -30,7 +32,7 @@
             <div id="uwu3"></div>
             <div id="uwu4">
                 <div id="left">
-                    <div id="tags">
+                    <div id="tags" class="essays">
                         <input type="checkbox" id="awa1"/>
                         <div class="body"></div>
                         <div class="head">
@@ -38,18 +40,33 @@
                             <div class="buttons"><label for="awa1" class="button palette"><i class="fas fa-palette"></i></label></div>
                         </div>
                     </div>
-                    <div id="archives">
+                    <div id="archives" class="essays">
                         <input type="checkbox" id="awa4"/>
-                        <div class="body">
-                        </div>
+                        <div class="body"></div>
                         <div class="head">
                             <h3 class="ellipsis"><i class="fas fa-book"></i>文章归档</h3>
                             <div class="buttons"><label for="awa4" class="button reverse"><i class="fas fa-undo"></i></label></div>
                         </div>
                     </div>
+                    <div id="info" class="essay">
+                        <input type="checkbox" id="quq1"/>
+                        <div class="body"></div>
+                        <div class="head">
+                            <h3 class="ellipsis"><i class="fas fa-tags"></i>文章信息</h3>
+                            <div class="buttons"><label for="quq1" class="button palette"><i class="fas fa-palette"></i></label></div>
+                        </div>
+                    </div>
+                    <div id="content" class="essay">
+                        <input type="checkbox" id="quq2"/>
+                        <div class="body"></div>
+                        <div class="head">
+                            <h3 class="ellipsis"><i class="fas fa-book-spells"></i>大纲索引</h3>
+                            <div class="buttons"><label for="quq2" class="button reverse"><i class="fas fa-undo"></i></label></div>
+                        </div>
+                    </div>
                 </div>
                 <div id="right">
-                    <div id="stats">
+                    <div id="stats" class="essay essays">
                         <input type="checkbox" id="awa2"/>
                         <div class="body">
                             <div id="paper">
@@ -63,7 +80,7 @@
                             <div class="buttons"><label for="awa2" class="button switch"><i class="fas fa-stream"></i></label></div>
                         </div>
                     </div>
-                    <div id="history">
+                    <div id="history" class="essays">
                         <input type="checkbox" id="awa3"/>
                         <div class="body">
                             <div class="new">
@@ -118,10 +135,13 @@
                             <div class="buttons"><label for="awa3" class="button reverse"><i class="fas fa-retweet"></i></label></div>
                         </div>
                     </div>
+                    <div id="featured" class="essay">
+                        <div class="body"></div>
+                        <div class="head"></div>
+                    </div>
                 </div>
             </div>
             <div id="uwu5">
-                <input type="checkbox" id="ovo1" checked/>
                 <input type="checkbox" id="ovo2" checked/>
                 <input name="layer" type="radio" id="uvu1" checked/>
                 <input name="layer" type="radio" id="uvu2"/>
@@ -237,9 +257,7 @@
                     </div>
                     <div id="float">
                         <div class="buttons">
-                            <div class="layer1">
-                                <label class="button reverse" for="ovo1"><i class="fas fa-sort-amount-down"></i></label>
-                            </div>
+                            <div class="layer1"></div>
                             <div class="layer2">
                                 <div class="console">
                                 </div>

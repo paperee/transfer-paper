@@ -47,8 +47,12 @@ const markdown=(html=false)=>{
         linkify:true,
         typographer:true,
         quotes:`""''`,
-        doHighlight:false,
-        linkTarget:'_blank" rel="noopener noreferrer'
+        linkTarget:'_blank" rel="noopener noreferrer',
+        doHighlight:true,
+        highlight:(str,lang)=>{
+            try { return hljs.highlight(lang,str).value }
+            catch (ee) {}
+        }
     })
 }
 
@@ -154,29 +158,20 @@ const eebot={
     
 var base=[]
 const get={
-    essays:()=>getEssays(),
-    essay:()=>getEssay()
-}
-const getEssays=()=>{
-    Object.keys(data.list).forEach((ee)=>{
-        base.push([ee,...data.list[ee]])
-    })
-    base.sort((a,b)=>b[4]-a[4])
-    mkEssays.init()
-    mkSidebar.init()
-    find("#essays")[0].style.display="flex"
-}
-const getEssay=()=>{
-    mkEssay.init()
-    mkSidebar.init()
-    find("#essay")[0].style.display="flex"
+    essays:()=>mkEssays.init(),
+    essay:()=>mkEssay.init()
 }
 
 const mkSidebar={
     async init() {
+        this.display()
         this.tags()
         this.archives()
         this.stats()
+    },
+    async display() {
+        find("#"+data.type)[0].style.display="flex"
+        find("."+data.type).forEach((ee)=>ee.style.display="flex")
     },
     async tags() {
         const tags=[]
@@ -230,6 +225,10 @@ const mkSidebar={
 
 const mkEssays={
     async init() {
+        Object.keys(data.list).forEach((ee)=>{
+            base.push([ee,...data.list[ee]])
+        })
+        base.sort((a,b)=>b[4]-a[4])
         const num=Math.ceil(base.length/4)
         for (let i=0;i<num;i++) {
             await this.createPage(i)
@@ -364,6 +363,7 @@ const webzoom=(value)=>{
 window.onload=()=>{
     print(data)
     get[data.type]()
+    mkSidebar.init()
     mkComments.init()
 
     window.addEventListener("hashchange",()=>flip.getPage())
