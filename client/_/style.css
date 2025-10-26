@@ -90,7 +90,7 @@
     box-decoration-break:clone;
     tab-size:4;
     line-height:1.45;
-    letter-spacing:0.1rem;
+    letter-spacing:0.08rem;
     word-wrap:break-word;
     overflow-wrap:break-word;
     color:var(--color-text-1);
@@ -101,6 +101,11 @@
     text-decoration-color:var(--color-text-2);
     transform-style:preserve-3d;
     -webkit-overflow-scrolling:touch;
+    
+  scroll-behavior: smooth;
+  -webkit-scroll-behavior: smooth; /* Safari */
+  -moz-scroll-behavior: smooth; /* Firefox */
+  -ms-scroll-behavior: smooth; /* IE/Edge */
 }
 .ellipsis {
     overflow:hidden;
@@ -211,8 +216,7 @@ pre {
 }
 blockquote {
     position: relative;
-    padding-left: 1.2rem; /* 增加一些左边距 */
-    margin-bottom: 0.5rem;
+    padding-left: 1.2rem;
 }
 
 blockquote::before {
@@ -221,7 +225,7 @@ blockquote::before {
     left: 0;
     top: 0.3rem;
     bottom: 0.3rem;
-    width: 0.44rem;
+    width: 0.42rem;
     background: rgba(50, 50, 50, 0.9);
     border-radius: 0.2rem
 }
@@ -253,6 +257,42 @@ html {
     cursor:pointer;
     transition:background-color 0.17s ease-in-out;
     &:hover { background-color:var(--color-bg-4); }
+}
+.colorful {
+    counter-increment:tags 1;
+    background:var(--color-tag-1);
+    margin:0.2rem 0.14rem 0.2rem;
+    padding:0.08rem 0.55rem;
+    border-radius:0.9rem;
+    color:#0a1400;
+    font-size:0.93rem;
+    transition:transform 0.1s ease-in-out,box-shadow 0.15s ease-in-out;
+    cursor:pointer;
+    box-shadow:0 0 0.4rem 0.1rem var(--color-shadow-1);
+    &:hover {
+        transform:scale(1.05);
+        box-shadow:0.1rem 0.1rem 0.5rem 0.15rem var(--color-shadow-2);
+    }
+    &:nth-child(2n) {
+        background:var(--color-tag-2);
+        color:#001b1d;
+    }
+    &:nth-child(3n) {
+        background:var(--color-tag-3);
+        color:#021e1e;
+    }
+    &:nth-child(4n) {
+        background:var(--color-tag-4);
+        color:#041123;
+    }
+    &:nth-child(5n) {
+        background:var(--color-tag-5);
+        color:#0d0d20;
+    }
+    &:nth-child(6n) {
+        background:var(--color-tag-6);
+        color:#1d0b27;
+    }
 }
 #main {
     display:grid;
@@ -359,42 +399,6 @@ html {
                     align-items:center;
                     justify-content:center;
                     padding:0.1rem 0 0.4rem;
-                    span {
-                        counter-increment:tags 1;
-                        background:var(--color-tag-1);
-                        margin:0.2rem 0.14rem 0.2rem;
-                        padding:0.08rem 0.55rem;
-                        border-radius:0.9rem;
-                        color:#0a1400;
-                        font-size:0.93rem;
-                        transition:transform 0.1s ease-in-out,box-shadow 0.15s ease-in-out;
-                        cursor:pointer;
-                        box-shadow:0 0 0.4rem 0.1rem var(--color-shadow-1);
-                        &:hover {
-                            transform:scale(1.05);
-                            box-shadow:0.1rem 0.1rem 0.5rem 0.15rem var(--color-shadow-2);
-                        }
-                        &:nth-child(2n) {
-                            background:var(--color-tag-2);
-                            color:#001b1d;
-                        }
-                        &:nth-child(3n) {
-                            background:var(--color-tag-3);
-                            color:#021e1e;
-                        }
-                        &:nth-child(4n) {
-                            background:var(--color-tag-4);
-                            color:#041123;
-                        }
-                        &:nth-child(5n) {
-                            background:var(--color-tag-5);
-                            color:#0d0d20;
-                        }
-                        &:nth-child(6n) {
-                            background:var(--color-tag-6);
-                            color:#1d0b27;
-                        }
-                    }
                 }
                 .head h3::after {
                     content:"-"counter(tags)"-";
@@ -452,6 +456,43 @@ html {
                     ~.body { &,&>div>div { flex-direction:column-reverse; } }
                 }
 
+            }
+            #info {
+                .body {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: flex-end;
+                    height: 100%;
+                    .colorful { padding:0.26rem 0.55rem; }
+                }
+            }
+            #content {
+                .body #list {
+                    h1 {
+                        font-size: 1.1rem;
+                        margin-left: 0.5rem;
+                    }
+                    h2 {
+                        font-size: 1rem;
+                        margin-left: 2rem;
+                    }
+                    h3 {
+                        font-size: 0.9rem;
+                        margin-left:3rem;
+                    }
+                    * {
+                        display: block;
+                        overflow:hidden;
+                        white-space:nowrap;
+                        text-overflow:ellipsis;
+                        margin-bottom: 0.2rem;
+                        cursor: pointer;
+                        &:hover::before {
+                            content: '# ';
+                        }
+                    }
+                }
             }
         }
         #right {
@@ -658,7 +699,6 @@ html {
                     counter-reset:page 0;
                     flex-direction:column-reverse;
                     justify-content:flex-end;
-                    height:100%;
                     #flip {
                         display:flex;
                         flex-direction:column;
@@ -725,45 +765,45 @@ html {
                     overflow-y:scroll;
                     height: 100%;
                     .body {
+                        
                         margin-right: 1rem;
                         transform: translateY(-0.5rem);
-                        * { line-height: 1.8;}
+                        * {
+                            line-height: 1.8;
+                            &:not(li,li>ol,li>ul) { margin: 0.9rem 0; }
+                        }
                         h1,h2 { margin-top: 2%; }
                         h3,h4 { margin-top: 1.5%; }
                         h5,h6 { margin-top: 1%; }
-                        details {
-                            br { display: none;}
+                        details br { display: none;}                        
+                        table {
+                            background:transparent;
+                            width:100%;
+                            border-spacing:0;
+                            border:2px solid rgba(50, 55, 58,0.8);
+                            border-radius:5px;
+                            margin:14px 0;
                         }
-                        
-table {
-    background:transparent;
-    width:100%;
-    border-spacing:0;
-    border:2px solid rgba(50, 55, 58,0.8);
-    border-radius:5px;
-    margin:14px 0;
-}
-table * {
-    font-size:0.95em;
-}
-thead>tr>th {
-    vertical-align:bottom;
-}
-tr>th,tr>td {
-    padding:8px;
-    vertical-align:top;
-}
-td,th {
-    text-align:left;
-}
-tbody>tr:nth-child(odd)>td,tbody>tr:nth-child(odd)>th {
-    background:var(--color-border-7);
-    &,* { color:#bebebe; }
-}
-thead>tr,tbody>tr:nth-child(even)>td,tbody>tr:nth-child(even)>th {
-    background:var(--color-primary-10);
-}
-
+                        table * {
+                            font-size:0.95em;
+                        }
+                        thead>tr>th {
+                            vertical-align:bottom;
+                        }
+                        tr>th,tr>td {
+                            padding:8px;
+                            vertical-align:top;
+                        }
+                        td,th {
+                            text-align:left;
+                        }
+                        tbody>tr:nth-child(odd)>td,tbody>tr:nth-child(odd)>th {
+                            background:var(--color-border-7);
+                            &,* { color:#bebebe; }
+                        }
+                        thead>tr,tbody>tr:nth-child(even)>td,tbody>tr:nth-child(even)>th {
+                            background:var(--color-primary-10);
+                        }
                     }
                 }
             }

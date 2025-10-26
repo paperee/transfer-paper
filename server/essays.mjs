@@ -9,8 +9,14 @@ import { watch } from "chokidar"
 
 class getEssays {
     constructor() {
-        // awaitWriteFinish: 添加延迟，保证新文章的更新在旧文章的删除之后（
-        this.main={depth:1,awaitWriteFinish:{stabilityThreshold:757,pollInterval:757}}
+        // awaitWriteFinish: 添加延迟，保证更新在删除之后（
+        this.main={
+            depth:1,
+            awaitWriteFinish:{
+                stabilityThreshold:757,
+                pollInterval:757
+            }
+        }
         this.list={}
         this.watch()
     }
@@ -30,7 +36,12 @@ class getEssays {
     }
     async upload(path) {
         const res=await stat(path)
-        this.list[parse(path).name]=[basename(dirname(path)),parse(path).ext,res.size,parseInt(res.birthtimeMs)]
+        this.list[parse(path).name]=[
+            basename(dirname(path)),
+            parse(path).ext,
+            res.size,
+            parseInt(res.birthtimeMs)
+        ]
         print("[upload] "+path)
     }
 }

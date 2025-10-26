@@ -1,6 +1,7 @@
 class getStats {
     constructor() {
-        this.stat=[+new Date(),0,114514]
+        // [启动时间,总访问量,总文章数]
+        this.stat=[+new Date(),0,0]
     }
     async get(length) {
         this.stat[1]++
