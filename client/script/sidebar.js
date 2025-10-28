@@ -43,30 +43,42 @@ const mkSidebar={
     },
     async stats() {
         setInterval(()=>find("#time")[0].textContent=
-            returnTime(formaTime(new Date()),"/"),1000
+            returnTime(formaTime(new Date()),false,"/"),1000
         )
         find("#sign")[0].textContent=data.pack.signature[
             Math.floor(r()*data.pack.signature.length)
         ]
         find("#table")[0].innerHTML=
-        "<table><tr><td>运行天数</td><td>"
+        "<table><tr><td class='ellipsis'>运行天数</td><td>"
         +Math.ceil((+new Date-data.stat[0])/86400000)+
-        "</td></tr><tr><td>总访问量</td><td>"
+        "</td></tr><tr><td class='ellipsis'>总访问量</td><td>"
         +data.stat[1]+
-        "</td></tr><tr><td>总文章数</td><td>"
+        "</td></tr><tr><td class='ellipsis'>总文章数</td><td>"
         +data.stat[2]+
-        "</td></tr><tr><td>总评论数</td><td>"
+        "</td></tr><tr><td class='ellipsis'>总评论数</td><td>"
         +114514+
         "</td></tr></table>"
     },
     async info() {
-
+        find("#info .body")[0].innerHTML=
+        "<div class='brief'><p><b>标签</b> <span class='colorful'> "
+        +data.info[0]+
+        "</span></p><p><b>类型</b> "
+        +type[data.info[1]]+
+        "</p><p><b>阅读时长</b> "
+        +Math.ceil(data.info[2]/500)+
+        "分钟</p><p><b>更新时间</b> "
+        +returnTime(formaTime(new Date(data.info[3])),true)+
+        "</p></div>"
     },
     async content() {
-        const content=find("#list")[0]
+        const content=find("#content .list")[0]
         find("#essay h1,#essay h2,#essay h3").forEach((ee)=>{
+            const temp=ee.cloneNode(true)
+            temp.innerHTML="<a href='#"+ee.textContent+"'>"+ee.innerHTML+"</a>"
+            content.appendChild(temp)
             ee.id=ee.textContent
-            content.innerHTML+="<a href='#"+ee.textContent+"'>"+ee.textContent+"</a>"
+            ee.innerHTML=temp.innerHTML
         })
     }
 }

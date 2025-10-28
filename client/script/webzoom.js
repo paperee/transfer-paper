@@ -1,7 +1,7 @@
 const webzoom=(value)=>{
     const value_=2*(+value)/100
     find("#webzoom>h4")[0].textContent="网页缩放："+value+"%"
-    /* find("html")[0].style.fontSize="min("+value_+"vh,"+value_+"vw)" */
+    find("html")[0].style.fontSize="max(min("+value_+"dvh,"+value_+"vw),12px)"
     save("test",value)
     notice(
         "网页缩放",
@@ -10,4 +10,10 @@ const webzoom=(value)=>{
         :"成功将比例调节为：*"+value+"%*"
     )
     return value
+}
+
+const relativeZoom=(value)=>{
+    const zoomBar=find("#webzoom>input")[0]
+    zoomBar.value=+zoomBar.value+value
+    zoomBar.dispatchEvent(new Event("change"))
 }

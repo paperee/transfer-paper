@@ -1,3 +1,4 @@
+var base=[]
 const mkEssays={
     async init() {
         Object.keys(data.list).forEach((ee)=>{
@@ -21,21 +22,28 @@ const mkEssays={
         find("#essays .body")[0].appendChild(div)
     },
     async createInfo(info) {
-        return "<div class='essay' id='"+info[0]+"'><h2>"
-        +info[0]+
+        const title=info[0]
+        const label=info[1]
+        const extension=info[2]
+        const wordCount=info[3]
+        const timestamp=info[4]
+        return "<div class='essay' id='"
+        +title+
+        "'><h2>"
+        +title+
         "</h2><p><span>标签: "
-        +info[1]+
+        +label+
         "</span><span>类型: "
-        +type[info[2]]+
+        +type[extension]+
         "</span><span>阅读时长: "
-        +Math.ceil(info[3]/500)+
+        +Math.ceil(wordCount/500)+
         "分钟</span></p><p><span>更新时间: "
-        +returnTime(formaTime(new Date(info[4])))+
+        +returnTime(formaTime(new Date(timestamp)))+
         "</span></p></div>"
     },
     async gotoEssay() {
         find(".page .essay").forEach((ee)=>{
-            ee.onclick=()=>go("essays/"+ee.id)
+            ee.onclick=()=>go("essays/"+ee.id,"")
         })
     }
 }

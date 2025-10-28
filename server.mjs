@@ -20,6 +20,9 @@ app.set("view engine", "ejs")
 app.set("views", join(__dirname, "client"))
 app.use(express.static(join(__dirname, "client")))
 
+import { hotReloadMiddleware } from "@devmade/express-hot-reload"
+app.use(hotReloadMiddleware({ watchFolders: ["./client"] }))
+
 app.get("/essays/:folder/:file", (req, res) => {
     res.redirect("/" + req.params.folder + "/" + req.params.file)
 })

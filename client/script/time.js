@@ -8,9 +8,9 @@ const formaTime=(timer)=>[ // 原始时间转易读列表
     pad(timer.getMinutes()),
     pad(timer.getSeconds())
 ]
-const returnTime=(time,sign="-")=>( // 格式化时间列表
+const returnTime=(time,cut=false,sign="-")=>( // 格式化时间列表
     time.slice(0,3).join(sign)+" "+
-    time.slice(3).join(":")
+    (cut?"":time.slice(3).join(":"))
 ).trimEnd()
 
 const formatTimeDiff=(ms)=>{ // 毫秒转时分秒
