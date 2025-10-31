@@ -5,6 +5,7 @@ const mkEssays={
             base.push([ee,...data.list[ee]])
         })
         base.sort((a,b)=>b[4]-a[4])
+        print(base)
         const num=Math.ceil(base.length/4)
         for (let i=0;i<num;i++) {
             await this.createPage(i)
@@ -36,8 +37,10 @@ const mkEssays={
         "</span><span>类型: "
         +type[extension]+
         "</span><span>阅读时长: "
-        +Math.ceil(wordCount/500)+
-        "分钟</span></p><p><span>更新时间: "
+        +Math.ceil(wordCount/1000)+
+        "分钟/"
+        +Math.ceil(wordCount/4)+
+        "字</span></p><p><span>更新时间: "
         +returnTime(formaTime(new Date(timestamp)))+
         "</span></p></div>"
     },

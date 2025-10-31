@@ -471,8 +471,13 @@ html {
                     align-items: flex-end;
                     width:100%;
                     height: 100%;
-                    .colorful { padding:0.26rem 0.55rem; }
-                    * { margin:0.25rem 0;}
+                    padding: 0 0.4rem 0.2rem 0;
+                    p {
+                        display: flex;
+                        align-items: center;
+                        height: 2rem;
+                        gap:0.3rem;
+                    }
                 }
             }
             #content {
@@ -610,14 +615,17 @@ html {
             ~#carton>#layer2 #markdown { display: none; }
         }
         input[type="radio"]:checked {
-            +input+input+div~div .home,+input+div~div .console,+div~div .comments { background:var(--color-bg-4); }
+            +input+input+input+div~div .search,+input+input+div~div .home,+input+div~div .console,+div~div .comments { background:var(--color-bg-4); }
             &:not(#uvu1) {
-                ~#carton #layer2,+input~div #console,+div #comments { display:flex; }
+                ~#carton #layer2,+input+input+input+div #search,+input+div #console,+div #comments { display:flex; }
                 ~#binding .layer { .fas::before { content:"\f2d2"; } }
                 ~#carton #layer1 { opacity:0.2; }
-                ~#carton .layer2,+input+#carton .layer2 .console,+#carton .layer2 .comment { display:inline-block; }
+                ~#carton .layer2,+input+input+#carton .layer2 .search,+input+#carton .layer2 .console,+#carton .layer2 .comment { display:inline-block; }
                 ~#carton .layer1 { display:none; }
             }
+        }
+        #uvu4:checked {
+            ~#binding .search { animation: fade 0.4s ease forwards; }
         }
         #binding {
             .buttons {
@@ -672,6 +680,11 @@ html {
                             top:25%;
                         }
                     }
+                }
+                .search {
+                    visibility: hidden;
+                    opacity:0;
+                    animation: fade- 0.3s ease forwards;
                 }
             }
         }
@@ -743,26 +756,6 @@ html {
                             height:0;
                             &:target { height:100%; }
                         }
-                        .essay {
-                            counter-increment:essays 1;
-                            margin:0 0.2rem 0.8rem;
-                            padding:0.6rem 0;
-                            width:92%;
-                            border-bottom:0.14rem dashed var(--color-border-4);
-                            cursor:pointer;
-                            /* transform:translateZ(0.1rem); */
-                            * { line-height:1.57; }
-                            h2::before { font-size:1.7rem; }
-                            p {
-                                display:flex;
-                                flex-wrap:wrap;
-                                span { margin-right:0.5rem; }
-                                span:first-letter {
-                                    font-size:0.96rem;
-                                    font-weight:bold;
-                                }
-                            }
-                        }
                     }
                     .head {
                         margin:0.4rem 0 1rem;
@@ -831,7 +824,7 @@ html {
             }
             #layer2 {
                 padding:1.1rem 1rem;
-                animation:fade-in 0.1s ease-in-out;
+                animation:fade 0.1s ease-in-out;
                 z-index:150;
                 &,&>* { display:none; }
                 #console {
@@ -950,27 +943,45 @@ html {
                             .comments {
                                 display: flex;
                                 flex-direction: column;
-                                align-items: flex-start;
                                 width: 105%;
                                 height: 23.5rem;
                                 padding-right: 1rem;
                                 overflow-y: scroll;
                                 transition:height 0.5s ease;
+                                .all {
+                                    display: flex;
+                                    flex-direction: column-reverse;
+                                    align-items: flex-start;
+                                }
                                 .comment {
-                                    h3 {
+                                    max-width:60%;
+                                    &>h3 {
                                         margin: 0 0 0.5rem 0;
                                         font-size: 1rem;
+                                        cursor: pointer;
+                                        &:empty::after { content: "test"; }
                                     }
                                     .bubble {
-                                        background: var(--color-primary-12);
+                                        width: fit-content;
+                                        min-width: 3rem;
+                                        min-height: 2rem;
+                                        background: var(--color-primary-10);
                                         position: relative;
                                         margin-bottom: 1.2rem;
-                                        padding: 0.5rem 1rem;
+                                        padding: 0.5rem 0.1rem 0.5rem 0.5rem;
                                         border: 0.14rem solid var(--color-border-3);
                                         border-radius: 0.8rem;
-                                        .content { transform:scale(0.9); }
+                                        transition:all 1s ease;
+                                        cursor: pointer;
+                                        .content {
+                                            max-height: 6rem;
+                                            padding:0 0.4rem 0 0;
+                                            overflow-y: auto;
+                                            transform:scale(0.9);
+                                            transition:all 1s ease;
+                                            &:empty::after { content: "在框中输入的文本将于此处预览"; }
+                                        }
                                         &,* * { overflow-wrap: anywhere; }
-                                        * { color:var(--color-text-5); }
                                         &::before {
                                             content: " ";
                                             position: absolute;
@@ -984,12 +995,10 @@ html {
                                 }
                                 .preview {
                                     align-self: flex-end;
-                                    h3 {
-                                        justify-content: flex-end;
-                                    }
+                                    &>h3 { justify-content: flex-end; }
                                     .bubble {
                                         background: var(--color-primary-7);
-                                        * { color:var(--color-text-2); }
+                                        margin-left: auto;
                                         &::before {
                                             border-bottom-color: var(--color-border-3);
                                             left:unset;
@@ -1027,6 +1036,42 @@ html {
                                     z-index: 0;
                                 }
                             }
+                        }
+                    }
+                }
+                #search {
+                    flex-direction: column;
+                    .head {
+                        h2 {
+                            &,* { font-size: 1.2rem; }
+                            .fas { margin-right: 1rem;}
+                        }
+                        margin-bottom: 0.5rem;
+                    }
+                    .body {
+                        width:100%;
+                        height:100%;
+                    }
+                }
+            }
+            #essays,#search {
+                .essay {
+                    counter-increment:essays 1;
+                    margin:0 0.2rem 0.8rem;
+                    padding:0.6rem 0;
+                    width:92%;
+                    border-bottom:0.14rem dashed var(--color-border-4);
+                    cursor:pointer;
+                    /* transform:translateZ(0.1rem); */
+                    * { line-height:1.57; }
+                    h2::before { font-size:1.7rem; }
+                    p {
+                        display:flex;
+                        flex-wrap:wrap;
+                        span { margin-right:0.5rem; }
+                        span:first-letter {
+                            font-size:0.96rem;
+                            font-weight:bold;
                         }
                     }
                 }
@@ -1192,9 +1237,25 @@ html {
     80% { transform:scale(1); }
     100% { opacity:1; }
 }
-@keyframes fade-in {
-    0% { opacity:0; }
-    100% { opacity:1; }
+@keyframes fade {
+    0% { 
+        visibility:hidden;
+        opacity:0;
+    }
+    100% {
+        visibility:visible;
+        opacity:1;
+    }
+}
+@keyframes fade- {
+    100% { 
+        visibility:hidden;
+        opacity:0;
+    }
+    0% {
+        visibility:visible;
+        opacity:1;
+    }
 }
 @keyframes fade-in-out {
     0%,100% { opacity:0; }

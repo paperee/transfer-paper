@@ -1,3 +1,4 @@
+var tags={}
 const mkSidebar={
     async init() {
         this.display()
@@ -12,10 +13,28 @@ const mkSidebar={
         find("."+data.type).forEach((ee)=>ee.style.display="flex")
     },
     async tags() {
-        const tags=[]
-        base.forEach((ee)=>!tags.includes(ee[1])?tags.push(ee[1]):null)
-        tags.sort(()=>r()-0.5)
-        .forEach((tag)=>find("#tags .body")[0].innerHTML+="<span class='colorful'>"+tag+"</span>")
+        base.forEach((ee)=>{
+            if (!Object.keys(tags).includes(ee[1])) return tags[ee[1]]=[ee[0]]
+            else tags[ee[1]].push(ee[0])
+        })
+        print(tags)
+        Object.keys(tags).sort(()=>r()-0.5).forEach((tag)=>{
+            find("#tags .body")[0].innerHTML+=
+            "<label class='colorful' for='uvu4' title="+tag+">"
+            +tag+"</label>"
+        })
+        find("#tags .colorful").forEach((ee)=>{
+            ee.onclick=()=>{
+                const search=find("#search .body")[0]
+                search.innerHTML=""
+                find("#search .head")[0].innerHTML=
+                "<h2><i class='fas fa-search'></i>拥有标签 "+ee.textContent+" 的全部文章</h2>"
+                tags[ee.title].forEach((id)=>{
+                    const temp=find("#"+id)[0].cloneNode(true)
+                    search.appendChild(temp)
+                })
+            }
+        })
     },
     async archives() {
         const archives={}
@@ -27,7 +46,11 @@ const mkSidebar={
         Object.keys(archives).forEach((value,index)=>{
             const div=create("div")
             archives[value].forEach((ee)=>{
-                div.innerHTML+="<p class='ellipsis'><a>"+ee+"</a></p>"
+                div.innerHTML+="<p class='ellipsis'><a href='essays/"
+                +ee+
+                "'>"
+                +ee+
+                "</a></p>"
             })
             find("#archives .body")[0].innerHTML+=
             "<div><input type='checkbox' id='ouo"
@@ -60,14 +83,17 @@ const mkSidebar={
         "</td></tr></table>"
     },
     async info() {
+        if (!data.info) return
         find("#info .body")[0].innerHTML=
         "<div class='brief'><p><b>标签</b> <span class='colorful'> "
         +data.info[0]+
         "</span></p><p><b>类型</b> "
         +type[data.info[1]]+
         "</p><p><b>阅读时长</b> "
-        +Math.ceil(data.info[2]/500)+
-        "分钟</p><p><b>更新时间</b> "
+        +Math.ceil(data.info[2]/1000)+
+        "分钟/"
+        +Math.ceil(data.info[2]/4)+
+        "字</p><p><b>更新时间</b> "
         +returnTime(formaTime(new Date(data.info[3])),true)+
         "</p></div>"
     },

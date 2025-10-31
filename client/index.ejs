@@ -55,7 +55,7 @@
                             <div class="body"></div>
                             <div class="head">
                                 <h3 class="ellipsis"><i class="fas fa-seedling"></i>文章信息</h3>
-                                <div class="buttons"><label for="quq1" class="button palette"><i class="fas fa-palette"></i></label></div>
+                                <!-- <div class="buttons"><label for="quq1" class="button palette"><i class="fas fa-palette"></i></label></div> -->
                             </div>
                         </div>
                         <div id="content" class="essay">
@@ -63,7 +63,7 @@
                             <div class="body"><div class="list"></div></div>
                             <div class="head">
                                 <h3 class="ellipsis"><i class="fas fa-list-alt"></i>大纲索引</h3>
-                                <div class="buttons"><label for="quq2" class="button reverse"><i class="fas fa-undo"></i></label></div>
+                                <!-- <div class="buttons"><label for="quq2" class="button reverse"><i class="fas fa-undo"></i></label></div> -->
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                             <div class="body"></div>
                             <div class="head">
                                 <h3 class="ellipsis"><i class="fas fa-feather-alt"></i>置顶评论</h3>
-                                <div class="buttons"><label for="awa2" class="button switch"><i class="fas fa-stream"></i></label></div>
+                                <!-- <div class="buttons"><label for="awa2" class="button switch"><i class="fas fa-stream"></i></label></div> -->
                             </div>
                         </div>
                     </div>
@@ -102,6 +102,7 @@
             </div>
             <div id="uwu5">
                 <input type="checkbox" id="ovo2" checked/>
+                <input name="layer" type="radio" id="uvu4"/>
                 <input name="layer" type="radio" id="uvu1" checked/>
                 <input name="layer" type="radio" id="uvu2"/>
                 <input name="layer" type="radio" id="uvu3"/>
@@ -131,52 +132,20 @@
                             </div>
                             <div class="body">
                                 <form id="forum">
-                                    <textarea type="text" name="text" placeholder="来发送一条一条留言/评论吧！（支持Markdown语法）"></textarea>
+                                    <textarea name="text" maxlength="1024" placeholder="来发送一条一条留言/评论吧！（支持Markdown语法）"></textarea>
                                     <div id="responses">
                                         <h3><i class="far fa-smile-plus"></i>添加表情</h3>
                                         <div class="buttons"></div>
                                     </div>
                                     <div id="submit">
-                                        <input id="user" type="text" name="nick" autocomplete="off" placeholder="昵称">
+                                        <input id="user" type="text" name="nick" autocomplete="off" placeholder="昵称" maxlength="12">
                                         <button id="post" type="submit"><b>发送</b></button>
                                     </div>
                                     <div class="comments">
-                                        <div class="comment preview">
-                                            <h3>paperee</h3>
-                                            <div class="bubble">
-                                                <div class="content">
-                                                    <p>我觉得还行</p>
-                                                    <b>测试测试测试（</b>
-                                                </div>
-                                            </div>
+                                        <div class="comment preview"><h3></h3>
+                                            <div class="bubble"><div class="content"></div></div>
                                         </div>
-                                        <div class="comment">
-                                            <h3>paperee</h3>
-                                            <div class="bubble">
-                                                <div class="content">
-                                                    <p>我觉得还行</p>
-                                                    <b>测试测试测试（</b>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="comment">
-                                            <h3>paperee</h3>
-                                            <div class="bubble">
-                                                <div class="content">
-                                                    <p>我觉得还行</p>
-                                                    <b>测试测试测试（</b>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="comment">
-                                            <h3>纸片君ee</h3>
-                                            <div class="bubble">
-                                                <div class="content">
-                                                    <p>2025-08-03 15:34</p>
-                                                    <p>https://www.paperee.com/2025/08/10/114514.html</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <div class="all"></div>
                                     </div>
                                 </form>
                                 <div id="markdown">
@@ -196,6 +165,10 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div id="search">
+                            <div class="head"></div>
+                            <div class="body"></div>
                         </div>
                     </div>
                     <div id="layer1">
@@ -236,6 +209,7 @@
                         <label class="button home" for="uvu1"><i class="fas fa-book-open"></i><span>主页面</span></label>
                         <label class="button console" for="uvu2"><i class="fas fa-sliders-h"></i><span>控制台</span></label>
                         <label class="button comments" for="uvu3"><i class="fas fa-comment"></i><span></span></label>
+                        <label class="button search" for="uvu4"><i class="fas fa-search"></i><span>放大镜</span></label>
                     </div>
                 </div>
             </div>

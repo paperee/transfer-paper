@@ -14,11 +14,17 @@ import getEssay from "./server/essay.mjs"
 import getEssays from "./server/essays.mjs"
 const essays = new getEssays()
 
+import { getComments,checkComment,saveComment } from "./server/comments.mjs"
+
 import express from "express"
 const app = new express()
 app.set("view engine", "ejs")
 app.set("views", join(__dirname, "client"))
 app.use(express.static(join(__dirname, "client")))
+
+import multer from "multer"
+const upload = multer()
+app.use(express.urlencoded({ extended: true }))
 
 import { hotReloadMiddleware } from "@devmade/express-hot-reload"
 app.use(hotReloadMiddleware({ watchFolders: ["./client"] }))
@@ -26,22 +32,45 @@ app.use(hotReloadMiddleware({ watchFolders: ["./client"] }))
 app.get("/essays/:folder/:file", (req, res) => {
     res.redirect("/" + req.params.folder + "/" + req.params.file)
 })
+
 app.get("/", async (_, res) => {
     const stat = await stats.get(essays.ls())
-    res.render("index.ejs",
-        { data: { type: "essays", pack: pack, list: essays.list, stat: stat } }
-    )
+    try {
+        const json = await getComments(join(__dirname, "server", "comments", "home.json"))
+        res.render("index.ejs",
+            { data: { type: "essays", pack: pack, list: essays.list, stat: stat, json: json } }
+        )
+    }
+    catch(_) {
+        print(_)
+        res.status(500).send("500 Internal Server Error")
+    }
 })
+
 app.get("/essays/:title", async (req, res) => {
     const title = req.params.title
     const info = essays.list[title]
     if (!info) return res.status(404).send("(4n0n4me) 404 Not Found")
     const stat = await stats.get(essays.ls())
-    getEssay(join(__dirname, "server", "essays", info[0], title + info[1]))
-        .then(async (text) => res.render("index.ejs",
-            { data: { type: "essay", pack: pack, title: title, info: info, text: text, stat: stat } }
-        ))
-        .catch((_) => res.status(500).send("500 Internal Server Error"))
+    try {
+        const text = await getEssay(join(__dirname, "server", "essays", info[0], title + info[1]))
+        const json = await getComments(join(__dirname, "server", "comments", info[0], title + ".json"))
+        res.render("index.ejs",
+            { data: { type: "essay", pack: pack, title: title, info: info, text: text, stat: stat, json: json } }
+        )
+    }
+    catch(_) {
+        print(_)
+        res.status(500).send("500 Internal Server Error")
+    }
+})
+
+app.post("/comment",upload.none(),async (req, res) => {
+    const path=join(__dirname, "server", "comments",req.body.label,req.body.title+".json")
+    const check=await checkComment(path,req.body)
+    if (check) return res.json({code:0,text:check})
+    const comment=await saveComment(path,req.body)
+    res.json({code:1,text:"发送成功——",data:comment})
 })
 
 app.listen(main.port, () => print("http://localhost:" + main.port))

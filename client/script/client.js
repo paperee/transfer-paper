@@ -23,5 +23,19 @@ window.onload=()=>{
         const reflect={"+":5,"=":5,"-":-5}
         relativeZoom(reflect[event.key])
     })
+
+    find("#user")[0].addEventListener("input",function () {
+        find(".preview>h3")[0].textContent=this.value
+    })
+
+    find("#forum textarea")[0].addEventListener("input",function () {
+        find(".preview .content")[0].innerHTML=markdown().render(this.value)
+    })
+
+    find("#forum")[0].addEventListener("submit",function (event) {
+        event.preventDefault()
+        postComment.init(this)
+    })
+
     eebot.init()
 }
