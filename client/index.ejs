@@ -26,8 +26,8 @@
                 </div>
                 <div id="pages">
                     <div class="button" onclick="go('/','')"><b><i class="fas fa-home"></i>首页</b></div>
-                    <div class="button"><b><i class="fas fa-link"></i>树洞</b></div>
-                    <div class="button"><b><i class="fas fa-info-circle"></i>关于</b></div>
+                    <div class="button" onclick="go('/essays/树洞','')"><b><i class="fas fa-link"></i>树洞</b></div>
+                    <div class="button" onclick="go('/essays/关于','')"><b><i class="fas fa-info-circle"></i>关于</b></div>
                 </div>
             </div>
             <div id="uwu3"></div>
@@ -191,8 +191,7 @@
                         <div class="buttons">
                             <div class="layer1"></div>
                             <div class="layer2">
-                                <div class="console">
-                                </div>
+                                <div class="console"></div>
                                 <div class="comment">
                                     <label class="button" for="ovo2"><i class="fas fa-question"></i></label>
                                 </div>
@@ -219,7 +218,7 @@
             </div>
         </div>
     </body>
-    <script>const data=<%- JSON.stringify(data) %></script>
+    <script>const data=JSON.parse(decodeURI("<%- encodeURI(JSON.stringify(data)) %>"))</script>
     <script src="script/default.js"></script>
     <script src="script/text.js"></script>
     <script src="script/time.js"></script>

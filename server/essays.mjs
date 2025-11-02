@@ -36,11 +36,13 @@ class getEssays {
     }
     async upload(path) {
         const res=await stat(path)
+        const label=basename(dirname(path))
+        if (label=="bin") return
         this.list[parse(path).name]=[
-            basename(dirname(path)),
+            label,
             parse(path).ext,
             res.size,
-            parseInt(res.birthtimeMs)
+            parseInt(res.mtimeMs)
         ]
         print("[upload] "+path)
     }

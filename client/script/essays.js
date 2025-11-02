@@ -2,6 +2,7 @@ var base=[]
 const mkEssays={
     async init() {
         Object.keys(data.list).forEach((ee)=>{
+            if (data.list[ee][0]=="page") return
             base.push([ee,...data.list[ee]])
         })
         base.sort((a,b)=>b[4]-a[4])

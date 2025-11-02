@@ -772,12 +772,12 @@ html {
                         margin-right: 0.7rem;
                         transform: translateY(-0.5rem);
                         &>* {
-                            line-height: 1.8;
-                            margin: 0.9rem 0;
+                            line-height: 1.75;
+                            margin: 0.8rem 0;
                         }
-                        h1,h2 { margin-top: 2%; }
-                        h3,h4 { margin-top: 1.5%; }
-                        h5,h6 { margin-top: 1%; }
+                        h1:not(:first-of-type),h2 { margin-top: 4%; }
+                        h3,h4 { margin-top: 3%; }
+                        h5,h6 { margin-top: 2%; }
                         h1,h2,h3 {
                             cursor: pointer;
                             &>a {
@@ -943,7 +943,7 @@ html {
                             .comments {
                                 display: flex;
                                 flex-direction: column;
-                                width: 105%;
+                                width: 106%;
                                 height: 23.5rem;
                                 padding-right: 1rem;
                                 overflow-y: scroll;

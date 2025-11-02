@@ -14,6 +14,7 @@ const mkSidebar={
     },
     async tags() {
         base.forEach((ee)=>{
+            if (ee[1]=="page") return
             if (!Object.keys(tags).includes(ee[1])) return tags[ee[1]]=[ee[0]]
             else tags[ee[1]].push(ee[0])
         })
@@ -39,6 +40,7 @@ const mkSidebar={
     async archives() {
         const archives={}
         base.forEach((ee)=>{
+            if (ee[1]=="page") return
             const time=returnTime(formaTime(new Date(ee[4])).slice(0,2))
             if (!archives[time]) archives[time]=[]
             archives[time].push(ee[0])

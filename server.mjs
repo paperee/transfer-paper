@@ -15,6 +15,7 @@ import getEssays from "./server/essays.mjs"
 const essays = new getEssays()
 
 import { getComments,checkComment,saveComment } from "./server/comments.mjs"
+let newComments=[]
 
 import express from "express"
 const app = new express()
@@ -38,7 +39,7 @@ app.get("/", async (_, res) => {
     try {
         const json = await getComments(join(__dirname, "server", "comments", "home.json"))
         res.render("index.ejs",
-            { data: { type: "essays", pack: pack, list: essays.list, stat: stat, json: json } }
+            { data: { type: "essays", pack: pack, list: essays.list, stat: stat, json: json, new: newComments } }
         )
     }
     catch(_) {
@@ -56,7 +57,7 @@ app.get("/essays/:title", async (req, res) => {
         const text = await getEssay(join(__dirname, "server", "essays", info[0], title + info[1]))
         const json = await getComments(join(__dirname, "server", "comments", info[0], title + ".json"))
         res.render("index.ejs",
-            { data: { type: "essay", pack: pack, title: title, info: info, text: text, stat: stat, json: json } }
+            { data: { type: "essay", pack: pack, title: title, info: info, stat: stat, json: json, text:text } }
         )
     }
     catch(_) {
@@ -70,6 +71,8 @@ app.post("/comment",upload.none(),async (req, res) => {
     const check=await checkComment(path,req.body)
     if (check) return res.json({code:0,text:check})
     const comment=await saveComment(path,req.body)
+    newComments.push(comment)
+    if (newComments.length>=5) newComments.shift()
     res.json({code:1,text:"发送成功——",data:comment})
 })
 
