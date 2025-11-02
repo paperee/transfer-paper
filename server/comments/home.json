@@ -1,1 +1,1 @@
-[["paperee","这是一条测试评论\r\n`但是好像有一些问题`",1761881670234],["paperee","```javascript\r\nvar area={\"essays\":\"留言板\",\"essay\":\"评论区\"}\r\nconst mkComments={\r\n    async init() {\r\n        find(\".comments>span\")[0].textContent\r\n        =find(\"#comments .head h2 span\")[0].textContent\r\n        =area[data.type]\r\n        this.emoji()\r\n        this.area()\r\n    }\r\n}\r\n```",1761881818125],["paperee","~~好吧问题解决了~~",1761882400129],["paperee","aaaaaaaaaaaaaaaaaa",1761886573743]]
+[]
