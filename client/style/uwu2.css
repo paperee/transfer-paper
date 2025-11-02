@@ -1,0 +1,29 @@
+#uwu2 {
+    grid-area:1/2/2/-4;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:end;
+    justify-items:stretch;
+    height:95%;
+    border-bottom:0.18rem solid var(--color-border-2);
+    border-radius:2%;
+    transform:translateZ(0.2rem);
+    animation: scale-up-center 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both 1s;
+    #title {
+        padding: 0.5rem;
+        .fas { margin-right:0.3rem; }
+        h1 { transform:translateZ(0.3rem); }
+        h4 { transform:translateZ(0.2rem); }
+    }
+    #pages {
+        padding:0 0 0.4rem 0.4rem;
+        transform:translateZ(0.4rem);
+        .button {
+            width:4.72rem;
+            /* min-width:fit-content; */
+            margin:0 0 0.25rem;
+            * { font-size:1.05rem; }
+            .fas { margin-right:0.2rem; }
+        }
+    }
+}

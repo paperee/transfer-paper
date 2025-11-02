@@ -1,0 +1,25 @@
+#uwu6 {
+    display:flex;
+    flex-direction:column-reverse;
+    align-items:flex-end;
+    position:absolute;
+    max-height:90dvh;
+    bottom:2.5rem;
+    right:0;
+    transform:translateZ(2.5rem);
+    &>div {
+        background:rgba(90,113,115,0.7);
+        width:max-content;
+        min-height:max-content;
+        margin:0.7rem;
+        padding:0.8rem 2rem;
+        border-radius:2rem;
+        backdrop-filter:contrast(0.7);
+        box-shadow:0 0.5rem 2rem var(--color-shadow-3);
+        animation:fade-in-out 2.7s ease-in-out both;
+        .head {
+            margin-bottom:0.11rem;
+            .fas { margin-right:0.37rem; }
+        }
+    }
+}

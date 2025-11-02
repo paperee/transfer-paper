@@ -14,13 +14,15 @@ const mkComments={
             "<div class='button'>"+ee+"</div>"
         })
         find("#responses .button").forEach((button)=>button.onclick=()=>{
-            find("#forum textarea")[0].value+=
-            " "+button.textContent+" "
+            find("#forum textarea")[0].value+=button.textContent+" "
         })
     },
     async area() {
         const comments=find("#forum .all")[0]
         data.json.forEach((comment)=>comments.innerHTML+=mkComment(comment))
+        find(".comment h3").forEach((nick)=>{
+            nick.onclick=()=>find("#forum textarea")[0].value+="@"+(nick.textContent||at[Math.floor(r()*3)])+" "
+        })
     }
 }
 

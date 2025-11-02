@@ -1,0 +1,72 @@
+:root {
+    /* 主要渐变色 */
+    --color-primary-1: rgba(100,140,130,0.95);
+    --color-primary-2: rgba(90,150,160,0.95);
+    --color-gradient-1: linear-gradient(135deg,var(--color-primary-1),var(--color-primary-2));
+
+    --color-primary-3: rgba(115,135,150,0.55);
+    --color-primary-4: rgba(115,145,135,0.6);
+    --color-gradient-2:linear-gradient(160deg,var(--color-primary-3),var(--color-primary-4) 50%);
+    
+    --color-primary-5: rgba(120,140,150,0.2);
+    --color-primary-6: rgba(120,130,130,0.22);
+    --color-gradient-3:linear-gradient(160deg,var(--color-primary-5),var(--color-primary-6) 50%);
+    
+    --color-primary-7: rgba(220,230,225,0.15);
+    --color-primary-8: rgba(210,215,220,0.25);
+    --color-primary-9: rgba(220,230,230,0.15);
+    --color-gradient-4:linear-gradient(to right,var(--color-primary-7) 0%,var(--color-primary-8) 50%,var(--color-primary-9) 100%);
+    
+    --color-primary-10:rgba(30,50,60,0.05);
+    --color-primary-11:rgba(30,50,60,0.5);
+    --color-gradient-5:linear-gradient(to right,var(--color-primary-10) 0%, var(--color-primary-11) 10%, var(--color-primary-11) 90%, var(--color-primary-10) 100%);
+
+    --color-primary-12: rgba(60,80,77,0.4);
+    --color-gradient-6:linear-gradient(to bottom,transparent 0%,var(--color-primary-12) 7%,transparent 80%);
+    
+    --color-primary-13: rgba(105,135,140,0.85);
+    --color-primary-14: rgba(105,120,135,0.85);
+    --color-gradient-7:linear-gradient(150deg,var(--color-primary-13) 0%,var(--color-primary-14) 100%);
+
+    /* 背景相关 */
+    --color-bg-1: rgba(240,245,244,0.2);
+    --color-bg-2: rgba(40,45,44,0.2);
+    --color-bg-3: rgba(240,247,250,0.05);
+    --color-bg-4: rgba(200,250,240,0.1);
+    
+    /* 文字相关 */
+    --color-text-1: rgba(16,22,20,0.85);
+    --color-text-2: rgba(32,43,40,0.85);
+    --color-text-3: rgba(150,160,155,0.8);
+    --color-text-3-hover: rgba(190,200,195,0.8);
+    --color-text-4: rgba(26,32,33,0.85);
+    --color-text-5: rgba(160,170,165,0.85);
+    
+    /* 边框和分隔线 */
+    --color-border-1: rgba(255,255,255,0.1);
+    --color-border-2: rgba(210,210,210,0.2);
+    --color-border-3: rgba(30,40,45,0.4);
+    --color-border-4: rgba(40,60,55,0.4);
+    --color-border-5: rgba(255,255,255,0.13);
+    --color-border-6: rgba(28,38,37,0.6);
+    --color-border-7: rgba(32,40,43,0.6);
+    
+    /* 交互元素 */
+    --color-shadow-1: rgba(10,20,15,0.1);
+    --color-shadow-2: rgba(10,15,20,0.1);
+    --color-shadow-3: rgba(30,60,80,0.2);
+    --color-shadow-4: rgba(50,80,120,0.15);
+    --color-shadow-5: rgba(20,40,40,0.8);
+    
+    /* 标签颜色 */
+    --color-tag-1: rgba(150,200,150,0.4);
+    --color-tag-2: rgba(100,203,185,0.4);
+    --color-tag-3: rgba(48,203,209,0.4);
+    --color-tag-4: rgba(61,200,234,0.4);
+    --color-tag-5: rgba(140,191,247,0.4);
+    --color-tag-6: rgba(170,185,245,0.4);
+    
+    /* 表格颜色 */
+    --color-table-odd: rgba(255,255,255,0.03);
+    --color-table-hover: rgba(255,255,255,0.08);
+}

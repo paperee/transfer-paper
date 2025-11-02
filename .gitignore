@@ -149,6 +149,6 @@ design.md
 server/comments/*
 server/essays/*
 
-!server/essays/page
-!server/essays/markdown
+!server/essays/page/*
+!server/essays/markdown/*
 !server/comments/home.json
