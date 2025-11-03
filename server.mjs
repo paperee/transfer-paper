@@ -27,8 +27,8 @@ import multer from "multer"
 const upload = multer()
 app.use(express.urlencoded({ extended: true }))
 
-import { hotReloadMiddleware } from "@devmade/express-hot-reload"
-app.use(hotReloadMiddleware({ watchFolders: ["./client"] }))
+// import { hotReloadMiddleware } from "@devmade/express-hot-reload"
+// app.use(hotReloadMiddleware({ watchFolders: ["./client"] }))
 
 app.get("/essays/:folder/:file", (req, res) => {
     res.redirect("/" + req.params.folder + "/" + req.params.file)

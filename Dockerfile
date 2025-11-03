@@ -5,6 +5,6 @@ COPY . .
 
 RUN npm i
 
-EXPOSE 5708
+EXPOSE 5707
 
 CMD ["node", "server.mjs"]
