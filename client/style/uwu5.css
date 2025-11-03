@@ -123,6 +123,7 @@
                 counter-reset:page 0;
                 flex-direction:column-reverse;
                 justify-content:flex-end;
+                height: 100%;
                 #flip {
                     display:flex;
                     flex-direction:column;

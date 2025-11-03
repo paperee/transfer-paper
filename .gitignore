@@ -150,5 +150,7 @@ server/comments/*
 server/essays/*
 
 !server/essays/page/*
-!server/essays/markdown/*
+!server/essays/misc/*
 !server/comments/home.json
+
+Dockerfile
