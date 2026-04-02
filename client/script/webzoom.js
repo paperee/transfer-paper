@@ -1,19 +1,24 @@
-const webzoom=(value)=>{
-    const value_=2*(+value)/100
-    find("#webzoom>h4")[0].textContent="网页缩放："+value+"%"
-    find("html")[0].style.fontSize="max(min("+value_+"dvh,"+value_+"vw),12px)"
-    save("test",value)
-    notice(
-        "网页缩放",
-        +value===114
-        ?"成功将*114514 1919810*\n调节为：哼哼哼 啊啊啊啊"
-        :"成功将比例调节为：*"+value+"%*"
-    )
-    return value
+const webzoom = (value) => {
+  const percent = +value
+  const scale = 2 * percent / 100
+  const title = find('#webzoom > h4')[0]
+  if (title) title.textContent = `网页缩放：${percent}%`
+
+  const html = find('html')[0]
+  if (html) html.style.fontSize = `max(min(${scale}dvh, ${percent}vw), 12px)`
+  save('webZ', percent)
+  notice(
+    '网页缩放',
+    percent === 114
+      ? '成功将*114514 1919810*\n调节为：哼哼哼 啊啊啊啊'
+      : `成功将比例调节为：*${percent}%*`
+  )
+  return percent
 }
 
-const relativeZoom=(value)=>{
-    const zoomBar=find("#webzoom>input")[0]
-    zoomBar.value=+zoomBar.value+value
-    zoomBar.dispatchEvent(new Event("change"))
+const relativeZoom = (delta) => {
+  const zoomBar = find('#webzoom > input')[0]
+  if (!zoomBar) return
+  zoomBar.value = String(+zoomBar.value + +delta)
+  zoomBar.dispatchEvent(new Event('change'))
 }

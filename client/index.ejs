@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="mobile-web-app-capable" content="yes">
-        <meta name="Keywords" content="<%= data.pack.title %>,TRANSFER-PAPER｜转印纸">
-        <meta name="Description" content="<%= data.pack.title %>">
+        <meta name="Keywords" content="<%= data.pack.title %>,<%= data.pack.uploader %>,TRANSFER-PAPER,转印纸">
+        <meta name="Description" content="<%= data.pack.title %>｜<%= data.pack.uploader %>">
+        <link rel="icon" href="resources/fish.ico" />
         <link rel="stylesheet" type="text/css" href="resources/fontawesome.min.css">
         <link rel="stylesheet" type="text/css" href="resources/vs-dark.css">
         <link rel="stylesheet" type="text/css" href="style/root.css">
@@ -24,7 +25,7 @@
         <script type="text/Javascript" src="resources/vanilla-tilt.min.js"></script>
         <script type="text/Javascript" src="resources/remarkable.min.js"></script>
         <script type="text/Javascript" src="resources/highlight.min.js"></script>
-        <title><%= data.pack.title %>｜<%= data.pack.uploader %></title>
+        <title><%= data.title??'首页' %>｜<%= data.pack.title %></title>
     </head>
     <body>
         <div id="main" data-tilt data-tilt-full-page-listening data-tilt-max="7" data-tilt-speed="100" data-tilt-perspective="7000" data-tilt-easing="cubic-bezier(0.25,0.1,0.25,1)">
@@ -66,7 +67,6 @@
                             <div class="body"></div>
                             <div class="head">
                                 <h3 class="ellipsis"><i class="fas fa-seedling"></i>文章信息</h3>
-                                <!-- <div class="buttons"><label for="quq1" class="button palette"><i class="fas fa-palette"></i></label></div> -->
                             </div>
                         </div>
                         <div id="content" class="essay">
@@ -74,7 +74,6 @@
                             <div class="body"><div class="list"></div></div>
                             <div class="head">
                                 <h3 class="ellipsis"><i class="fas fa-list-alt"></i>大纲索引</h3>
-                                <!-- <div class="buttons"><label for="quq2" class="button reverse"><i class="fas fa-undo"></i></label></div> -->
                             </div>
                         </div>
                     </div>
@@ -95,7 +94,10 @@
                         </div>
                         <div id="history" class="essays">
                             <input type="checkbox" id="awa3"/>
-                            <div class="body"></div>
+                            <div class="body">
+                              <div class="new"></div>
+                              <div class="old"></div>
+                            </div>
                             <div class="head">
                                 <h3 class="ellipsis"><i class="fas fa-comments"></i>最<b class="new">新</b><b class="old">旧</b>评论</h3>
                                 <div class="buttons"><label for="awa3" class="button reverse"><i class="fas fa-retweet"></i></label></div>
@@ -105,7 +107,6 @@
                             <div class="body"></div>
                             <div class="head">
                                 <h3 class="ellipsis"><i class="fas fa-feather-alt"></i>置顶评论</h3>
-                                <!-- <div class="buttons"><label for="awa2" class="button switch"><i class="fas fa-stream"></i></label></div> -->
                             </div>
                         </div>
                     </div>
@@ -182,11 +183,23 @@
                                 <div class="button last"><a><i class="fas fa-angle-double-down"></i></a></div>
                             </div>
                         </div>
-                        <div id="essay"><div class="body"></div></div>
+                        <div id="essay">
+                          <div class="body"></div>
+                          <hr><blockquote><b><f0>本文遵循 <i><%- data.pack.license %></i> 协议，由 <i><%= data.pack.uploader %></i> 发布（自动生成页尾）</f0></b></blockquote>
+                        </div>
                     </div>
                     <div id="float">
                         <div class="buttons">
-                            <div class="layer1"></div>
+                            <div class="layer1">
+                              <div class="essays">
+                                <label class="button" onclick="rEssay()"><i class="fas fa-random"></i></label>
+                              </div>
+                              <div class="essay">
+                                <label class="button" onclick="go('/download/'+data.title,'')"><i class="fas fa-download"></i></label>
+                                <label class="button" onclick="toT()"><i class="fas fa-arrow-up"></i></label>
+                                <label class="button" onclick="toB()"><i class="fas fa-arrow-down"></i></label>
+                              </div>
+                            </div>
                             <div class="layer2">
                                 <div class="console"></div>
                                 <div class="comment"><label class="button" for="ovo2"><i class="fas fa-question"></i></label></div>

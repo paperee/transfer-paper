@@ -1,27 +1,25 @@
-function setInnerHTML(elm, html) {
-  elm.innerHTML = html;
-  
-  Array.from(elm.querySelectorAll("script"))
-    .forEach( oldScriptEl => {
-      const newScriptEl = document.createElement("script");
-      
-      Array.from(oldScriptEl.attributes).forEach( attr => {
-        newScriptEl.setAttribute(attr.name, attr.value) 
-      });
-      
-      const scriptText = document.createTextNode(oldScriptEl.innerHTML);
-      newScriptEl.appendChild(scriptText);
-      
-      oldScriptEl.parentNode.replaceChild(newScriptEl, oldScriptEl);
-  });
+function setInnerHTML(ee, html) {
+  if (!ee) return
+  ee.innerHTML = html
+
+  Array.from(ee.querySelectorAll('script')).forEach((oldS) => {
+    const newS = create('script')
+
+    Array.from(oldS.attributes).forEach((attr) => {
+      newS.setAttribute(attr.name, attr.value)
+    })
+
+    const text = document.createTextNode(oldS.innerHTML)
+    newS.appendChild(text)
+
+    oldS.parentNode.replaceChild(newS, oldS)
+  })
 }
 
-
 const mkEssay = {
-    async init() {
-        this.createEssay()
-    },
-    async createEssay() {
-        setInnerHTML(find("#essay .body")[0], markdown(true).render(data["text"]))
-    }
+  async init() { this.createEssay() },
+  async createEssay() {
+    const body = find('#essay .body')[0]
+    setInnerHTML(body, markdown(true).render(data.text))
+  }
 }

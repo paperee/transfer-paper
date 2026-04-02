@@ -1,23 +1,33 @@
-const date=new Date() // 获取原始时间
-const pad=(time,total=2,str="0")=>time.toString().padStart(total,str) // 数字空位0补齐
-const formaTime=(timer)=>[ // 原始时间转易读列表
-    pad(timer.getFullYear(),4),
-    pad(timer.getMonth()+1),
-    pad(timer.getDate()),
-    pad(timer.getHours()),
-    pad(timer.getMinutes()),
-    pad(timer.getSeconds())
-]
-const returnTime=(time,cut=false,sign="-")=>( // 格式化时间列表
-    time.slice(0,3).join(sign)+" "+
-    (cut?"":time.slice(3).join(":"))
-).trimEnd()
+const date = new Date() // 获取原始时间
 
-const formatTimeDiff=(ms)=>{ // 毫秒转时分秒
-    const seconds=Math.floor(ms/1000)
-    const hours=Math.floor(seconds/3600)
-    const minutes=Math.floor((seconds%3600)/60)
-    return (hours?hours+"时":"")
-    +(minutes?minutes+"分":"")
-    +seconds%60+"秒"
+const padS = (time, total = 2, str = '0') => {
+  return String(time).padStart(total, str)
 }
+
+const padE = (time, total = 13, str = '0') => {
+  return +String(time).padEnd(total, str)
+}
+
+const easyT = (timer) => [
+  padS(timer.getFullYear(), 4),
+  padS(timer.getMonth() + 1),
+  padS(timer.getDate()),
+  padS(timer.getHours()),
+  padS(timer.getMinutes()),
+  padS(timer.getSeconds())
+]
+
+const reT = (time, skip = 0, sign = '-') => {
+  const YMD = time.slice(0, 3).join(sign)
+  const HMS = skip ? '' : time.slice(3).join(':')
+  return `${YMD} ${HMS}`.trimEnd()
+}
+
+const diffT = (ms) => {
+  const s = Math.floor(ms / 1000)
+  const h = Math.floor(s / 3600)
+  const m = Math.floor((s % 3600) / 60)
+  return (h ? h + '时' : '') + (m ? m + '分' : '') + (s % 60) + '秒'
+}
+
+const getT = (str) => new Date(str + 'T00:00:00+08:00').getTime()

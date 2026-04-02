@@ -1,5 +1,7 @@
-import { readFile,writeFile,mkdir,access } from "fs/promises"
-import { dirname } from "path"
+import { readdir,readFile,writeFile,mkdir,access } from "fs/promises"
+import { fileURLToPath } from "url"
+import { join, dirname } from "path"
+const __dirname=dirname(fileURLToPath(import.meta.url))
 
 const getComments=async (path)=>{
     try {
@@ -13,8 +15,27 @@ const getComments=async (path)=>{
     }
 }
 
+const getAllComments=async ()=>{
+  const comments = []
+  const dir = join(__dirname,"comments")
+  const tags = await readdir(dir, { withFileTypes: true })
+  for (const tag of tags) {
+    if (!tag.isDirectory()) continue;
+    const jsons = await readdir(join(dir, tag.name), { withFileTypes: true })
+    for (const json of jsons) {
+      if (!json.isFile()) continue
+      const file = await getComments(join(dir, tag.name, json.name))
+      file.map((com) => com.push(tag.name,json.name.slice(11,-5)))
+      comments.push(...file)
+    }
+  }
+  comments.sort((a, b) => b[2] - a[2])
+  return comments
+}
+
 const checkComment=async (path,body)=>{
-    try { await access(path) }catch(_) { return "找不到目标文章 QAQ" }
+    try { await access(path) }
+    catch(_) { return "找不到目标文章 QAQ" }
     if (!Object.values(body).every((item) => item.trim() !== ""))
         return "不可以提交空内容/空昵称——"
     if (!/^[\p{L}\p{N}]+$/u.test(body.nick))
@@ -34,4 +55,4 @@ const saveComment=async (path,body)=>{
     return comment
 }
 
-export { getComments,checkComment,saveComment }
+export { getComments, getAllComments, checkComment, saveComment }
