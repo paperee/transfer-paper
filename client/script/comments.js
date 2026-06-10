@@ -56,7 +56,8 @@ const postComment = {
   async init(form) {
     this.comment = new FormData(form)
     this.comment.append('tag', data.info ? data.info[0] : '.')
-    this.comment.append('title', data.info ? data.info[3] + '~' + data.title : 'home')
+    this.comment.append('date', data.info ? data.info[3] + '~' : '')
+    this.comment.append('title', data.info ? data.title : 'home')
     this.test()
   },
 

@@ -7,13 +7,13 @@ const test = (url) => url == window.location.href // 获取URL
 
 const save = (key, value) => { // 存入缓存
   localStorage.setItem(key, value)
-  print('save', key, value)
+  // print('save', key, value)
   return value
 }
 
 const load = (key, def) => { // 读出缓存
   const value = localStorage.getItem(key) || def
-  print('load', key, value)
+  // print('load', key, value)
   return value
 }
 
