@@ -58,7 +58,7 @@ const postComment = {
     this.comment.append('tag', data.info ? data.info[0] : '.')
     this.comment.append('date', data.info ? data.info[3] + '~' : '')
     this.comment.append('title', data.info ? data.title : 'home')
-    this.test()
+    this.post()
   },
 
   async test() {
@@ -78,10 +78,13 @@ const postComment = {
     if (txt.length > 512)
       text = '最多可以输入512字的内容'
 
-    text ? notice(area[data.type], text) : this.post()
+    return text
   },
 
   async post() {
+    const text = await this.test()
+    if (text) return notice(area[data.type], text)
+
     const response = await fetch('/comment', {
       method: 'POST',
       body: this.comment
@@ -96,10 +99,10 @@ const postComment = {
     const comments = find('#forum .all')[0]
     if (comments) comments.innerHTML += mkComment(result.data)
 
-    const text = find('#forum textarea')[0]
-    if (text) {
-      text.value = ''
-      text.dispatchEvent(new Event('input'))
+    const forum = find('#forum textarea')[0]
+    if (forum) {
+      forum.value = ''
+      forum.dispatchEvent(new Event('input'))
     }
   }
 }

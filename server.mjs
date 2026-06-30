@@ -26,14 +26,26 @@ import express from 'express'
 const app = new express()
 app.set('view engine', 'ejs')
 app.set('views', client)
+
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff')  
+  res.setHeader('X-Frame-Options', 'DENY')  
+  res.setHeader('X-XSS-Protection', '1; mode=block')  
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin')
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
+  next()
+})
+
 app.use(express.static(client))
+app.use(express.urlencoded({ extended: true }))
 
 import multer from 'multer'
 const upload = multer()
-app.use(express.urlencoded({ extended: true }))
 
 // import { hotReloadMiddleware } from '@devmade/express-hot-reload'
 // app.use(hotReloadMiddleware({ watchFolders: ['./client'] }))
+
+const test_ = (title) => /\/|\\|\.\./i.test(title)
 
 const join_ = (dict, tag, title) => {
   const f_dict = dict == 'c' ? 'comments' : (dict == 'e' ? 'essays' : '.')
@@ -69,6 +81,7 @@ app.get('/', async (_, res) => {
 
 app.get('/essays/:title', async (req, res) => {
   const title = req.params.title
+  if (test_(title)) res.status(500).send('250 WHAT')
 
   const info = essays.list[title]
   if (!info) return res.status(404).send('(4n0n4me) 404 CUTE')
@@ -114,6 +127,7 @@ app.post('/comment', upload.none(), async (req, res) => {
 
 app.get('/download/:title', async (req, res) => {
   const title = req.params.title
+  if (test_(title)) res.status(500).send('250 WHAT')
 
   const info = essays.list[title]
   if (!info) return res.status(404).send('(4n0n4me) 404 CUTE')

@@ -7,7 +7,8 @@
     "main": "server.mjs",
     "scripts": {
         "start": "node server.mjs",
-        "test": "echo \"Error:no test specified\" && exit 1"
+        "audit": "npm audit --audit-level=high",
+        "audit:fix": "npm audit fix --dry-run"
     },
     "author": "paperee",
     "license": "WTFPL",
@@ -19,11 +20,11 @@
         "url": "https://github.com/paperee/transfer-paper/issues"
     },
     "dependencies": {
-        "@devmade/express-hot-reload": "^1.0.5",
-        "archiver": "^7.0.1",
-        "chokidar": "^4.0.3",
-        "ejs": "^3.1.10",
-        "express": "^4.21.2",
-        "multer": "^2.0.2"
+        "@devmade/express-hot-reload": "~1.0.5",
+        "archiver": "~7.0.1",
+        "chokidar": "~4.0.3",
+        "ejs": "~3.1.10",
+        "express": "~4.22.2",
+        "multer": "~2.2.0"
     }
 }

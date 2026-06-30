@@ -43,10 +43,10 @@ const checkComment = async (path, body) => {
   if (!/^[\p{L}\p{N}]+$/u.test(body.nick))
     return '昵称应当由英/汉/数组成'
 
-  if (await body.nick.length > 12)
+  if (body.nick.length > 12)
     return '最多可以输入12字的昵称'
 
-  if (await body.text.length > 512)
+  if (body.text.length > 512)
     return '最多可以输入512字的内容'
 
   return 0
